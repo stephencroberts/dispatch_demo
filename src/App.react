@@ -1,0 +1,64 @@
+import React from 'react'
+import { Grid, Row, Col } from 'react-bootstrap'
+
+import AppDispatcher from 'AppDispatcher'
+import Login from 'LoginModule'
+import AuthStore from 'AuthStore'
+
+class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      authenticating: AuthStore.isAuthenticating(),
+      authenticated: AuthStore.isAuthenticated()
+    }
+  }
+
+  componentDidMount() {
+    AuthStore.addChangeListener(this._onAuthStoreChange)
+  }
+
+  componentWillUnmount() {
+    AuthStore.removeChangeListener(this._onAuthStoreChange)
+  }
+
+  render() {
+
+    if ( ! this.state.authenticated ) return React.cloneElement(<Login />, this.state)
+
+    return (
+      <Grid>
+        <Row>
+          <Col>
+            {this.props.children && React.cloneElement(this.props.children, this.state)}
+          </Col>
+        </Row>
+      </Grid>
+    )
+  }
+
+  _onAuthStoreChange = () => {
+    this.setState({
+      authenticating: AuthStore.isAuthenticating(),
+      authenticated: AuthStore.isAuthenticated()
+    })
+  }
+}
+
+
+class Home extends React.Component {
+
+  componentDidMount() {
+    AppDispatcher.dispatch({
+      eventAction: "HOME_REQUEST",
+      fetching: true
+    })
+  }
+
+  render() {
+    return <div>Home is what you make it</div>
+  }
+}
+
+export { App as App, Home as Home }

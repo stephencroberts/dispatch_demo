@@ -1,0 +1,25 @@
+{
+  "name": "flux-react-template",
+  "description": "Template for starting a flux+react website",
+  "main": "index.html",
+  "authors": [
+    "Stephen Roberts"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {
+    "react-bootstrap": "^0.28.3"
+  }
+}

@@ -1,0 +1,46 @@
+require('./style.css')
+
+import React from 'react'
+import { Button, Input } from 'react-bootstrap'
+import Spinner from 'Spinner'
+
+class Login extends React.Component {
+
+  static propTypes = {
+    authenticating: React.PropTypes.bool,
+    onEmailChange: React.PropTypes.func,
+    onPasswordChange: React.PropTypes.func,
+    onSubmit: React.PropTypes.func
+  }
+
+  render() {
+
+    var buttonText = this.props.authenticating ? <Spinner /> : 'Sign in'
+
+    return (
+      <form className="com-login" onSubmit={this.props.onSubmit} >
+        <h2 className="com-login-heading">Please sign in</h2>
+        <Input  type="email"
+                label="Email address"
+                labelClassName="sr-only"
+                placeholder="Email address"
+                required
+                autofocus
+                onChange={this.props.onEmailChange} />
+        <Input  type="password"
+                label="Password"
+                labelClassName="sr-only"
+                placeholder="Password"
+                required
+                onChange={this.props.onPasswordChange} />
+        <Button type="submit"
+                bsSize="large"
+                bsStyle="primary"
+                block
+                disabled={this.props.authenticating}>{buttonText}</Button>
+      </form>
+    )
+  }
+}
+
+export default Login

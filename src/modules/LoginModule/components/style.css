@@ -1,0 +1,37 @@
+.com-login {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.com-login .com-login-heading,
+.com-login .checkbox {
+  margin-bottom: 10px;
+}
+.com-login .checkbox {
+  font-weight: normal;
+}
+.com-login .form-group {
+  margin-bottom: 0;
+}
+.com-login .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.com-login .form-control:focus {
+  z-index: 2;
+}
+.com-login input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.com-login input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
